@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Management - Manajemen Tugas Mahasiswa</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-tasks"></i>
+                    <span>Task Management</span>
+                </div>
+                <button class="nav-toggle" id="navToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <nav class="nav-menu" id="navMenu">
+                    <button id="darkModeToggle">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="stats">
+            <div class="stat-card">
+                <div class="stat-value" id="totalTasks">0</div>
+                <div class="stat-label">Total Tugas</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="pendingTasks">0</div>
+                <div class="stat-label">Belum Selesai</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="completedTasks">0</div>
+                <div class="stat-label">Selesai</div>
+            </div>
+        </section>
+
+        <div class="dashboard">
+            <section class="task-form">
+                <h2>Tambah Tugas Baru</h2>
+                <form id="taskForm">
+                    <div class="form-group">
+                        <label for="taskName">Nama Tugas</label>
+                        <input type="text" id="taskName" class="form-control" placeholder="Masukkan nama tugas" required>
+                        <div class="error-message" id="taskNameError"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="course">Mata Kuliah</label>
+                        <input type="text" id="course" class="form-control" placeholder="Masukkan mata kuliah" required>
+                        <div class="error-message" id="courseError"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="deadline">Deadline</label>
+                        <input type="datetime-local" id="deadline" class="form-control" required>
+                        <div class="error-message" id="deadlineError"></div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-plus"></i> Tambah Tugas
+                    </button>
+                </form>
+            </section>
+
+            <section class="task-list">
+                <div class="task-header">
+                    <h2>Daftar Tugas</h2>
+                </div>
+                <div class="task-filters">
+                    <button class="filter-btn active" data-filter="all">Semua</button>
+                    <button class="filter-btn" data-filter="pending">Belum Selesai</button>
+                    <button class="filter-btn" data-filter="completed">Selesai</button>
+                </div>
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="Cari tugas...">
+                    <i class="fas fa-search"></i>
+                </div>
+                <div id="taskList">
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <div class="toast" id="toast"></div>
+
+    <script src="js/storage.js"></script>
+    <script src="js/validation.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
