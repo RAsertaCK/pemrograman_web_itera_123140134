@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <h1>Personal Dashboard</h1>
+            </div>
+            <div class="date-time">
+                <div id="current-date"></div>
+                <div id="current-time"></div>
+            </div>
+        </header>
+        
+        <div class="dashboard">
+            <div class="left-column">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">Jadwal Kuliah</h2>
+                        <button class="btn btn-primary" id="add-schedule-btn">Tambah</button>
+                    </div>
+                    <div id="schedule-list">
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">Daftar Tugas</h2>
+                        <button class="btn btn-primary" id="add-task-btn">Tambah</button>
+                    </div>
+                    <div id="task-list">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="right-column">
+                <div class="card weather-card">
+                    <div class="card-header">
+                        <h2 class="card-title">Informasi Cuaca</h2>
+                    </div>
+                    <div id="weather-info">
+                        <div class="weather-icon">⛅</div>
+                        <div class="weather-temp">--°C</div>
+                        <div class="weather-desc">Memuat data cuaca...</div>
+                        <div class="weather-details">
+                            <div class="weather-detail">
+                                <span class="detail-label">Kelembaban</span>
+                                <span class="detail-value">--%</span>
+                            </div>
+                            <div class="weather-detail">
+                                <span class="detail-label">Angin</span>
+                                <span class="detail-value">-- km/jam</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">Catatan Cepat</h2>
+                        <button class="btn btn-primary" id="add-note-btn">Tambah Catatan</button>
+                    </div>
+                    <div id="notes-list">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal" id="schedule-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="schedule-modal-title">Tambah Jadwal</h3>
+                <button class="close">&times;</button>
+            </div>
+            <form id="schedule-form">
+                <div class="form-group">
+                    <label for="schedule-name">Mata Kuliah</label>
+                    <input type="text" class="form-control" id="schedule-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="schedule-day">Hari</label>
+                    <select class="form-control" id="schedule-day" required>
+                        <option value="">Pilih Hari</option>
+                        <option value="Senin">Senin</option>
+                        <option value="Selasa">Selasa</option>
+                        <option value="Rabu">Rabu</option>
+                        <option value="Kamis">Kamis</option>
+                        <option value="Jumat">Jumat</option>
+                        <option value="Sabtu">Sabtu</option>
+                        <option value="Minggu">Minggu</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="schedule-time">Waktu</label>
+                    <input type="time" class="form-control" id="schedule-time" required>
+                </div>
+                <div class="form-group">
+                    <label for="schedule-location">Lokasi</label>
+                    <input type="text" class="form-control" id="schedule-location" required>
+                </div>
+                <input type="hidden" id="schedule-id">
+                <button type="submit" class="btn btn-primary">Simpan</button>
+            </form>
+        </div>
+    </div>
+    
+    <div class="modal" id="task-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="task-modal-title">Tambah Tugas</h3>
+                <button class="close">&times;</button>
+            </div>
+            <form id="task-form">
+                <div class="form-group">
+                    <label for="task-name">Nama Tugas</label>
+                    <input type="text" class="form-control" id="task-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="task-description">Deskripsi</label>
+                    <textarea class="form-control" id="task-description" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="task-deadline">Deadline</label>
+                    <input type="datetime-local" class="form-control" id="task-deadline" required>
+                </div>
+                <div class="form-group">
+                    <label for="task-priority">Prioritas</label>
+                    <select class="form-control" id="task-priority" required>
+                        <option value="">Pilih Prioritas</option>
+                        <option value="high">Tinggi</option>
+                        <option value="medium">Sedang</option>
+                        <option value="low">Rendah</option>
+                    </select>
+                </div>
+                <input type="hidden" id="task-id">
+                <button type="submit" class="btn btn-primary">Simpan</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal" id="note-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="note-modal-title">Tambah Catatan</h3>
+                <button class="close">&times;</button>
+            </div>
+            <form id="note-form">
+                <div class="form-group">
+                    <label for="note-title">Judul Catatan</label>
+                    <input type="text" class="form-control" id="note-title" placeholder="Masukkan judul catatan">
+                </div>
+                <div class="form-group">
+                    <label for="note-content">Isi Catatan</label>
+                    <textarea class="form-control" id="note-content" rows="6" placeholder="Tulis catatan Anda di sini..." required></textarea>
+                </div>
+                <input type="hidden" id="note-id">
+                <button type="submit" class="btn btn-primary">Simpan</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/classes/ScheduleManager.js"></script>
+    <script src="js/classes/TaskManager.js"></script>
+    <script src="js/classes/NoteManager.js"></script>
+    <script src="js/utils/helpers.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
