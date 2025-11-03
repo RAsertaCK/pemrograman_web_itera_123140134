@@ -80,4 +80,6 @@ Proyek ini dibuat menggunakan `create-react-app`.
 
 **Hasil Laporan Test (6 Passed)**
 *(Screenshot ini menunjukkan hasil akhir 6 test lolos di terminal)*
-![Hasil Test](./screenshots/testapp1.png)(./screenshots/testapp2.png)(./screenshots/testbookform.png)
+![Hasil Test](./screenshots/testapp1.png)
+![Hasil Test](./screenshots/testapp2.png)
+![Hasil Test](./screenshots/testbookform.png)
